@@ -1,11 +1,6 @@
 package com.htp;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -36,26 +31,11 @@ public class Main {
     * категории при заполнении коллекции)
 	* */
 
-        Book book1 = new Book(1, "Head First Java", "Bert", "Bates");
-        Book book2 = new Book(2, "Java, A Beginner's Guide", "Herbert", "Schildt");
-        Book book3 = new Book(3, "Test Driven Development");
-        Book book4 = new Book(4, "Effective Java", "Bloch", "Joshua");
-        Book book5 = new Book(5, "Clean Code: A Handbook of Agile Software Craftsmanship", "Robert", "C. Martin");
-        Book book6 = new Book(6, "The Pragmatic Programmer", "Andrew", "Hunt");
-        Book book7 = new Book(7, "Core Java Volume I - Fundamentals", "", "");
-        Book book8 = new Book(8, "Design Patterns: Elements of Reusable Object-Oriented Software", "Richard", "Helm");
-        Book book9 = new Book(9, "Refactoring: Improving the Design of Existing Code", "Kent", "Beck");
-        Book book10 = new Book(10, "OSGi in Action: Creating Modular Applications in Java", "Karl", "Pauls");
-        Book book11 = new Book(11, "The Clean Coder: A Code of Conduct for Professional Programmers", "Robert", "C. Martin");
-        Book book12 = new Book(12, "Java Concurrency in Practice", "Tim", "Peierls");
-        Book book13 = new Book(13, "Working Effectively with Legacy Code", "Michael", "Feathers");
-        Book book14 = new Book(14, "Peopleware: Productive Projects and Teams", "Tom", "DeMarco");
-        Book book15 = new Book(15, "Patterns of Enterprise Application Architecture", "Martin", "Fowler");
-        Book book16 = new Book(16, "Test Driven Development");
-        Book book17 = new Book(17, "Design Patterns: Elements of Reusable Object-Oriented Software", "Richard", "Helm");
-        Book book18 = new Book(18, "OSGi in Action: Creating Modular Applications in Java", "Karl", "Pauls");
-        Book book19 = new Book(19, "Working Effectively with Legacy Code", "Michael", "Feathers");
-        Book book20 = new Book(20, "Head First Java", "Bert", "Bates");
+        Book book1 = new Book("Head First Java");
+        Book book2 = new Book("Java, A Beginner's Guide");
+        Book book3 = new Book("Test Driven Development");
+        Book book4 = new Book("Effective Java");
+        Book book5 = new Book("Clean Code: A Handbook of Agile Software Craftsmanship");
 
 
         //1.
@@ -80,30 +60,56 @@ public class Main {
 
         //2
 
-        Set<Book> bookSet = new HashSet<>();
-        bookSet.add(book1);
-        bookSet.add(book2);
-        bookSet.add(book3);
-        bookSet.add(book4);
-        bookSet.add(book5);
-        bookSet.add(book6);
-        bookSet.add(book7);
-        bookSet.add(book8);
-        bookSet.add(book9);
-        bookSet.add(book10);
-        bookSet.add(book11);
-        bookSet.add(book12);
-        bookSet.add(book13);
-        bookSet.add(book14);
-        bookSet.add(book15);
-        bookSet.add(book16);
-        bookSet.add(book17);
-        bookSet.add(book18);
-        bookSet.add(book19);
-        bookSet.add(book20);
+        final Set<Book> books = books();
 
-
-        //3
-
+        books
+                .stream()
+                .filter(book -> book.getName().matches("[AEIOUaeiou].+"))
+                .forEach(System.out::println);
     }
+
+        private static Set<Book> books() {
+            final Set<Book> result = new HashSet<>();
+
+            result.add(new Book("The Great Gatsby"));
+            result.add(new Book("The Great Gatsby"));
+            result.add(new Book("The Great Gatsby"));
+            result.add(new Book("The Great Gatsby"));
+            result.add(new Book("The Great Gatsby"));
+            result.add(new Book("The Great Gatsby"));
+            result.add(new Book("The Great Gatsby"));
+            result.add(new Book("To Kill a Mockingbird"));
+            result.add(new Book("To Kill a Mockingbird"));
+            result.add(new Book("To Kill a Mockingbird"));
+            result.add(new Book("Harry Potter and the Sorcerer's Stone"));
+            result.add(new Book("Harry Potter and the Sorcerer's Stone"));
+            result.add(new Book("Harry Potter and the Sorcerer's Stone"));
+            result.add(new Book("1984"));
+            result.add(new Book("1984"));
+            result.add(new Book("1984"));
+            result.add(new Book("The Catcher in the Rye"));
+            result.add(new Book("The Catcher in the Rye"));
+            result.add(new Book("The Catcher in the Rye"));
+            result.add(new Book("The Hobbit"));
+            result.add(new Book("The Hobbit"));
+            result.add(new Book("The Hobbit"));
+            result.add(new Book("Fahrenheit 451"));
+            result.add(new Book("Fahrenheit 451"));
+            result.add(new Book("Fahrenheit 451"));
+            result.add(new Book("Anna Karenina"));
+            result.add(new Book("Anna Karenina"));
+            result.add(new Book("Anna Karenina"));
+            result.add(new Book("War and Peace"));
+            result.add(new Book("War and Peace"));
+            result.add(new Book("War and Peace"));
+            result.add(new Book("Middlemarch"));
+            result.add(new Book("Middlemarch"));
+            result.add(new Book("Middlemarch"));
+            result.add(new Book("The Adventures of Huckleberry Finn"));
+            result.add(new Book("The Adventures of Huckleberry Finn"));
+            result.add(new Book("The Adventures of Huckleberry Finn"));
+
+            return result;
+        }
+
 }

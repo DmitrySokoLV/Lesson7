@@ -1,57 +1,17 @@
 package com.htp;
 
 import java.util.Objects;
+import java.util.StringJoiner;
 
-public class Book {
-    private int id;
-    private String name;
-    private String authorName;
-    private String authorSurname;
+class Book {
+    private final String name;
 
-    public Book() {}
-
-    public Book(int id, String name) {
-        this.id = id;
+    public Book(String name) {
         this.name = name;
-    }
-
-    public Book(int id, String name, String authorName, String authorSurname) {
-        this.id = id;
-        this.name = name;
-        this.authorName = authorName;
-        this.authorSurname = authorSurname;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAuthorName() {
-        return authorName;
-    }
-
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
-
-    public String getAuthorSurname() {
-        return authorSurname;
-    }
-
-    public void setAuthorSurname(String authorSurname) {
-        this.authorSurname = authorSurname;
     }
 
     @Override
@@ -59,24 +19,18 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return id == book.id &&
-                Objects.equals(name, book.name) &&
-                Objects.equals(authorName, book.authorName) &&
-                Objects.equals(authorSurname, book.authorSurname);
+        return Objects.equals(name, book.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, authorName, authorSurname);
+        return Objects.hash(name);
     }
 
     @Override
     public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", authorName='" + authorName + '\'' +
-                ", authorSurname='" + authorSurname + '\'' +
-                '}';
+        return new StringJoiner(", ", Book.class.getSimpleName() + "[", "]")
+                .add("name='" + name + "'")
+                .toString();
     }
 }
